@@ -12,3 +12,16 @@ function setImgPosition(img, index) {
   img.style.left = imgWidth * index + "px";
 }
 imgs.forEach(setImgPosition);
+
+//when we click on the right button, move images to the left
+nextBtn.addEventListener("click", function () {
+  const currentImg = list.querySelector(".current-img");
+  const nextImg = currentImg.nextElementSibling;
+  const nextIndex = imgs.findIndex(function (img) {
+    img === nextImg;
+  });
+
+  list.style.transform = "translateX(-" + nextImg.style.left + ")";
+  currentImg.classList.remove("current-img");
+  nextImg.classList.add("current-img");
+});
